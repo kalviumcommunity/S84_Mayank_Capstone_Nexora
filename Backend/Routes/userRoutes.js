@@ -19,4 +19,19 @@ router.post('/', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+router.put('/:id', async (req, res) => {
+  try {
+    // Extract only allowed fields to update
+    const { name, email, preferences } = req.body;
+    const allowedUpdates = { name, email, preferences };
+
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, allowedUpdates, { new: true });
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
 module.exports = router;
