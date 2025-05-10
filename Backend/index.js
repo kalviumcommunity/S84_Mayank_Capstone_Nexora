@@ -9,7 +9,10 @@ app.use(express.json());
 
 mongoose.connect(process.env.DB_URL)
   .then(() => console.log('MongoDB Connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1); // Exit the application on connection failure
+  });
 
   const taskRoutes = require('./Routes/taskRoutes');
   const userRoutes = require('./Routes/userRoutes');
