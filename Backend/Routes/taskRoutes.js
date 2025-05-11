@@ -4,7 +4,7 @@ const Task = require('../Models/Task');
 
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.find().populate('user');
     res.json(tasks);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -12,7 +12,12 @@ router.get('/', async (req, res) => {
 });
 router.post('/', async (req, res) => {
   try {
-    const task = new Task(req.body);
+    const task = new Task({
+      title: req.body.title,
+      description: req.body.description,
+      dueDate: req.body.dueDate,
+      user: req.body.user 
+    });
     await task.save();
     res.status(201).json(task);
   } catch (err) {
@@ -21,11 +26,14 @@ router.post('/', async (req, res) => {
 });
 router.put('/:id', async (req, res) => {
   try {
-    const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedTask = await Task.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate('user');
     res.json(updatedTask);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
-
 module.exports = router;
