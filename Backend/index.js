@@ -9,9 +9,9 @@ app.use(express.json());
 
 mongoose.connect(process.env.DB_URL)
   .then(() => console.log('MongoDB Connected'))
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
- const taskRoutes = require('./Routes/taskRoutes');
+  .catch((err) => console.error('MongoDB connection error:', err));
+
+  const taskRoutes = require('./Routes/taskRoutes');
   const userRoutes = require('./Routes/userRoutes');
   const resourceRoutes = require('./Routes/resourceRoutes');
   const eventRoutes = require('./Routes/eventRoutes');
