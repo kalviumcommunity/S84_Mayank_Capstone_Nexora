@@ -102,3 +102,4 @@ Day/Task
 
 
 backend deployment link render - https://s84-mayank-capstone-nexora-6.onrender.com
+frontend deployment link netlify - https://nexora23.netlify.app/
