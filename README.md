@@ -98,3 +98,7 @@ Day/Task
 40. Review and merge incoming pull requests.
 41. Collect screenshots of app usage from 10–50 users.
 42. Finalize README, documentation, and submit project deliverables.
+
+
+
+backend deployment link render - https://s84-mayank-capstone-nexora-6.onrender.com
