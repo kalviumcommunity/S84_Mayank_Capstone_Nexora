@@ -27,8 +27,21 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'http://localhost:3001', 
+  'http://localhost:4000', 
+  'http://127.0.0.1:3000', 
+  'http://127.0.0.1:3001', 
+  'http://127.0.0.1:4000'
+];
+
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
 app.use(cors({ 
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:4000', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001', 'http://127.0.0.1:4000'], 
+    origin: allowedOrigins, 
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 })); 
@@ -40,7 +53,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID || 'mock-client-id',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'mock-client-secret',
-      callbackURL: 'http://localhost:8000/auth/google/callback',
+      callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:8000/auth/google/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
