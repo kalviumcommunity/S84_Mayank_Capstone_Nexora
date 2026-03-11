@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"], variable: '--font-sans' });
 const outfit = Outfit({ subsets: ["latin"], variable: '--font-heading' });
 
 export const metadata = {
-    title: 'Nexora - Campus Productivity Platform',
-    description: 'Manage your academic life in one place. Task management, campus resources, and events for students.',
+    title: 'Nexora | Student Productivity Hub',
+    description: 'A centralized platform for students to manage tasks, access resources, and stay updated with campus events.',
     icons: {
         icon: [
             {
