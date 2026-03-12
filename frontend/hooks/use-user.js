@@ -19,7 +19,7 @@ export function useUser() {
 
       try {
         console.log('useUser: fetching user...');
-        const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
         const response = await fetch(`${API_URL}/api/user`, {
           headers: {
             'Authorization': `Bearer ${token}`
