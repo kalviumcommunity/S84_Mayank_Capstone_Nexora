@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const passport = require('passport');
+
+dotenv.config();
 require('./config/passport'); // Configure passport
 
 const authRoutes = require('./Routes/authRoutes');
@@ -11,7 +13,6 @@ const userListRoutes = require('./Routes/userRoutes'); // Renamed to avoid confu
 const resourceRoutes = require('./Routes/resourceRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
 
-dotenv.config();
 const app = express();
 
 // Middleware
