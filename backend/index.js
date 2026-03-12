@@ -17,16 +17,10 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
-  'http://localhost:3000', 
-  'http://localhost:3001', 
-  'http://localhost:4000', 
-  'http://127.0.0.1:3000', 
-  'http://127.0.0.1:3001', 
-  'http://127.0.0.1:4000',
   'https://s84-mayank-capstone-nexora.vercel.app'
 ];
 
-if (process.env.FRONTEND_URL) {
+if (process.env.FRONTEND_URL && !allowedOrigins.includes(process.env.FRONTEND_URL)) {
   allowedOrigins.push(process.env.FRONTEND_URL);
 }
 
