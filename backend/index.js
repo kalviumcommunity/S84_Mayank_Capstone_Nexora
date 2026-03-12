@@ -22,7 +22,8 @@ const allowedOrigins = [
   'http://localhost:4000', 
   'http://127.0.0.1:3000', 
   'http://127.0.0.1:3001', 
-  'http://127.0.0.1:4000'
+  'http://127.0.0.1:4000',
+  'https://s84-mayank-capstone-nexora.vercel.app'
 ];
 
 if (process.env.FRONTEND_URL) {

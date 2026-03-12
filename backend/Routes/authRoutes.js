@@ -75,8 +75,9 @@ router.get(
       expiresIn: '1h',
     });
 
-    // Redirect to frontend with token - Ensure port matches frontend (4000)
-    res.redirect(`http://localhost:4000/login?token=${token}`);
+    // Redirect to frontend with token
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:4000';
+    res.redirect(`${frontendUrl}/login?token=${token}`);
   }
 );
 
